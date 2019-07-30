@@ -1,0 +1,44 @@
+button {
+  padding: 10px;
+  font-size: 24px;
+  color: white;
+  background: lightblue;
+}
+select,
+input[type="text"],
+input[type="date"] {
+  padding: 10px;
+  font-size: 24px;
+  color: darkslategray;
+  margin-left: 10px;
+}
+
+select {
+  margin-left: 0;
+}
+
+form {
+  display: inline-block;
+}
+
+.appContainer {
+  min-width: 765px;
+}
+
+.addSearchDiv,
+.filterDateDiv {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.editBtn,
+.removeBtn {
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0 0 0 10px;
+  background-color: lightblue;
+  border: none;
+  outline: none;
+  cursor: pointer
+}

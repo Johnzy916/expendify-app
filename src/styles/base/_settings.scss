@@ -1,0 +1,18 @@
+// color
+
+$off-black: #20222b;
+
+// spacing
+
+$s-size: 1.2rem;
+$m-size: 1.6rem;
+$l-size: 3.2rem;
+$xl-size: 4.8rem;
+
+// breakpoints
+
+@mixin bp($point) {
+  @if $point == desk {
+    @media (min-width: 45rem) { @content; }
+  }
+}
