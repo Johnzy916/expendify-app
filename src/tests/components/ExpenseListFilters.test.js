@@ -4,8 +4,6 @@ import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters.js';
-import '../setupTests.js'; // needed for codesandbox.io
-import toJSON from 'enzyme-to-json'; // needed for codesandbox.io
 
 let setTextFilter, sortByType, setStartDate, setEndDate, wrapper;
 
@@ -26,14 +24,14 @@ beforeEach(() => {
 });
 
 test('should render ExpenseListFilters with default values', () => {
-  expect(toJSON(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 test('should render ExpenseListFilters with data values', () => {
   wrapper.setProps({
     filters: altFilters
   });
-  expect(toJSON(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 test('should handle text change', () => {

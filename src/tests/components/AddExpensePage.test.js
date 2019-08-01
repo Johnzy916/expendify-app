@@ -2,8 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { AddExpensePage } from '../../components/AddExpensePage';
 import expenses from '../fixtures/expenses';
-import '../setupTests.js'; // needed for codesandbox.io
-import toJSON from 'enzyme-to-json'; // needed for codesandbox.io
 
 let addExpense, history, wrapper;
 
@@ -17,7 +15,7 @@ beforeEach(() => {
 });
 
 test('should render AddExpensePage correctly', () => {
-  expect(toJSON(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 test('should handle onSubmit', () => {
