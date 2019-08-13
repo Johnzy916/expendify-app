@@ -1,7 +1,5 @@
-const expensesReducer = (state, action) => {
-  if (typeof state === 'undefined') { 
-    return [] 
-  }
+const expensesReducer = (state = [], action) => {
+
   switch (action.type) {
     case 'ADD_EXPENSE':
       return [...state, action.expense];
@@ -16,6 +14,8 @@ const expensesReducer = (state, action) => {
           };
         } else { return expense };
       });
+    case 'SET_EXPENSES':
+      return action.expenses;
     default:
       return state;
   }
