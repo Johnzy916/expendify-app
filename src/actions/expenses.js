@@ -31,10 +31,20 @@ export const startAddExpense = (expenseData = {}) => {
 };
 
 // REMOVE_EXPENSE ACTION
-export const removeExpense = ({ id } = {}) => ({
+export const removeExpense = ({ id }) => ({
   type: 'REMOVE_EXPENSE',
   id
 });
+
+// REMOVE EXPENSE FROM THE DATABASE / DISPATCH ACTION
+export const startRemoveExpense = ({ id } = {}) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).remove()
+      .then(ref => {
+        dispatch(removeExpense({ id }));
+      }).catch(error => console.log('couldn\'t remove expense > ', error));
+  };
+};
 
 // EDIT_EXPENSE ACTION
 export const editExpense = (id, edits) => ({
@@ -50,19 +60,19 @@ export const setExpenses = (expenses) => ({
 })
 
 // FETCH EXPENSES FROM DATABASE / DISPATCH ACTION
- export const startSetExpenses = () => {
-   return (dispatch) => {
-     return database.ref('expenses').once('value')
-    .then(snapshot => {
-      const expenses = [];
-      snapshot.forEach(expense => {
-        expenses.push({
-          id: expense.key,
-          ...expense.val()
-        });
+export const startSetExpenses = () => {
+ return (dispatch) => {
+   return database.ref('expenses').once('value')
+  .then(snapshot => {
+    const expenses = [];
+    snapshot.forEach(expense => {
+      expenses.push({
+        id: expense.key,
+        ...expense.val()
       });
-      dispatch(setExpenses(expenses));
-    }).catch(error => console.log('couldn\'t get expenses > : ', error));
-   };
+    });
+    dispatch(setExpenses(expenses));
+  }).catch(error => console.log('couldn\'t get expenses > : ', error));
  };
+};
 
