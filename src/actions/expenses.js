@@ -9,16 +9,17 @@ export const addExpense = (expense) => ({
 
 // WRITE EXPENSE TO DATABASE / DISPATCH ACTION
 export const startAddExpense = (expenseData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       description = '',
       note = '',
       amount = 0,
       createdAt = 0
     } = expenseData;
-    
     const expense = { description, note, amount, createdAt };
-    return database.ref('expenses').push(expense)
+    
+    return database.ref(`users/${uid}/expenses`).push(expense)
       .then(ref => {
         dispatch(addExpense({
           id: ref.key, 
@@ -38,8 +39,9 @@ export const removeExpense = ({ id }) => ({
 
 // REMOVE EXPENSE FROM THE DATABASE / DISPATCH ACTION
 export const startRemoveExpense = ({ id } = {}) => {
-  return (dispatch) => {
-    return database.ref(`expenses/${id}`).remove()
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/expenses/${id}`).remove()
       .then(() => {
         dispatch(removeExpense({ id }));
       }).catch(error => console.log('couldn\'t remove expense > ', error));
@@ -55,8 +57,9 @@ export const editExpense = (id, edits) => ({
 
 // EDIT EXPENSE ON THE DATABASE / DISPATCH ACTION
 export const startEditExpense = (id, edits) => {
-  return (dispatch) => {
-    return database.ref(`expenses/${id}`).update(edits)
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/expenses/${id}`).update(edits)
       .then(() => {
         dispatch(editExpense(id, edits));
     }).catch(error => console.log('couldn\'t update expense > ', error));
@@ -71,8 +74,9 @@ export const setExpenses = (expenses) => ({
 
 // FETCH EXPENSES FROM DATABASE / DISPATCH ACTION
 export const startSetExpenses = () => {
- return (dispatch) => {
-   return database.ref('expenses').once('value')
+ return (dispatch, getState) => {
+   const uid = getState().auth.uid;
+   return database.ref(`users/${uid}/expenses`).once('value')
   .then(snapshot => {
     const expenses = [];
     snapshot.forEach(expense => {
