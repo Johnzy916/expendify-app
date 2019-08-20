@@ -1,5 +1,5 @@
 {
-  "name": "expensify-app",
+  "name": "expendify-app",
   "version": "1.0.0",
   "description": "React, Router, and Redux app",
   "main": "index.html",
