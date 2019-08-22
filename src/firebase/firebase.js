@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
@@ -12,6 +12,8 @@ const config = {
     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.FIREBASE_APP_ID
   };
+  
+console.log(config);
   
 // Initialize Firebase
 firebase.initializeApp(config);
