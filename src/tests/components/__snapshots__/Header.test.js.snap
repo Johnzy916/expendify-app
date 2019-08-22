@@ -5,7 +5,7 @@ exports[`should render Header correctly 1`] = `
   className="header"
 >
   <h1>
-    Expensify
+    Expendify
   </h1>
   <nav
     className="header__links"
