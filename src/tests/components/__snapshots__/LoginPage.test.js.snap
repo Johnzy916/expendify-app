@@ -16,7 +16,7 @@ exports[`should render LoginPage correctly 1`] = `
       Track, search, and expect what you're spending.
     </p>
     <button
-      className="button"
+      className="btn btn--google btn--shine"
     >
       Login with Google
     </button>

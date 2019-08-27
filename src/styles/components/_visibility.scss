@@ -1,0 +1,11 @@
+.show-for-mobile {
+    @include media(tablet) {
+        display: none;
+    }
+}
+
+.show-for-desktop {
+    @include media(phone) {
+        display: none;
+    }
+}

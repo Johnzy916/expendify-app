@@ -14,7 +14,7 @@ test('should filter by text value', () => {
 test('should filter by start date', () => {
   const filters = {
     text: '',
-    sortBy: 'date',
+    sortBy: 'date-lo',
     startDate: moment(0),
     endDate: undefined
   }
@@ -25,7 +25,7 @@ test('should filter by start date', () => {
 test('should filter by end date', () => {
   const filters = {
     text: '',
-    sortBy: 'date',
+    sortBy: 'date-lo',
     startDate: undefined,
     endDate: moment(0)
   }
@@ -36,7 +36,7 @@ test('should filter by end date', () => {
 test('should filter by both start and end date', () => {
   const filters = {
     text: '',
-    sortBy: 'date',
+    sortBy: 'date-lo',
     startDate: moment(0),
     endDate: moment(0).add(6, 'days')
   }
@@ -44,16 +44,25 @@ test('should filter by both start and end date', () => {
   expect(result).toEqual([ expenses[0], expenses[2] ]);
 });
 
-test('should sort by date', () => {
+test('should sort by date (high first)', () => {
   const filters ={
     text: '',
-    sortBy: 'date'
+    sortBy: 'date-hi'
+  };
+  const result = getVisibleExpenses(expenses, filters);
+  expect(result).toEqual([ expenses[1], expenses[2], expenses[0] ]);
+});
+
+test('should sort by date (low first)', () => {
+  const filters ={
+    text: '',
+    sortBy: 'date-lo'
   };
   const result = getVisibleExpenses(expenses, filters);
   expect(result).toEqual([ expenses[0], expenses[2], expenses[1] ]);
 });
 
-test('should sort by date (increment)', () => {
+test('should sort by amount (increment)', () => {
   const filters ={
     text: '',
     sortBy: 'increment'
@@ -62,7 +71,7 @@ test('should sort by date (increment)', () => {
   expect(result).toEqual([ expenses[0], expenses[1], expenses[2] ]);
 });
 
-test('should sort by date (decrement)', () => {
+test('should sort by amount (decrement)', () => {
   const filters ={
     text: '',
     sortBy: 'decrement'

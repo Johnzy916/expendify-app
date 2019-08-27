@@ -4,7 +4,7 @@ const filtersReducer = (state, action) => {
   if (typeof state === 'undefined') {
     return {
       text: '',
-      sortBy: 'date',
+      sortBy: 'date-hi',
       startDate: moment().startOf('month'),
       endDate: moment().endOf('month')
     }

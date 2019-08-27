@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
@@ -16,13 +16,26 @@ export class EditExpensePage extends Component {
   render() {
     return (
       <div>
-        <ExpenseForm
-          expense={this.props.expense}
-          onSubmit={this.onSubmit}
-        />
-        <button
-          onClick={this.onRemove}
-        >Remove</button>
+        <div className="page-header">
+          <div className="content-container">
+            <h1 className="page-header__title">
+              Edit Expense
+            </h1>
+          </div>
+        </div>
+        <div className="content-container">
+          <ExpenseForm
+            expense={this.props.expense}
+            onSubmit={this.onSubmit}
+            submitType="Save"
+          />
+          <button
+            className="btn btn--tertiary btn--shine"
+            onClick={this.onRemove}
+          >
+            Remove
+          </button>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,36 @@
+// colors for buttons and shine
+@mixin btn-colors($color) {
+    @if $color == google {
+        background: #DB4437;
+        &::before {
+            background: #4285F4;
+        }
+        &::after {
+            background: #F4B400;
+        }
+    } @else {
+        background: $color;
+        &::before {
+            background: lighten($color, 10%);
+        }
+        &::after {
+            background: rgba($white, .5);;
+        }
+    }
+}
+
+// media queries
+@mixin media($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 43.74em) { @content }; // up to 700px
+    }
+    @if $breakpoint == tablet {
+        @media only screen and (min-width: 43.75em) { @content }; // 700px +
+    }
+    @if $breakpoint == desktop {
+        @media only screen and (min-width: 62.5em) { @content }; // 1000px +
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width: 100em) { @content }; // 1600px +
+    }
+}

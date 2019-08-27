@@ -14,7 +14,9 @@
     "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "@babel/runtime": "^7.5.5",
+    "core-js": "^3.2.1",
     "express": "^4.17.1",
     "firebase": "^6.3.4",
     "history": "^4.9.0",
@@ -61,5 +63,11 @@
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "keywords": []
 }

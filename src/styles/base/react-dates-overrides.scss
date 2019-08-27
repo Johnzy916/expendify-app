@@ -1,0 +1,33 @@
+@import '../base/settings';
+
+// selected span
+.CalendarDay__selected_span {
+  background: lighten($color-secondary, 40%);
+  color: $white;
+  border: 1px solid lighten($color-secondary, 20%);
+}
+
+// hover selected span
+.CalendarDay__selected_span:active,
+.CalendarDay__selected_span:hover {
+  background: lighten($color-secondary, 20%);
+  border: 1px double lighten($color-secondary, 10%);
+  color: $white; }
+
+// selected day
+.CalendarDay__selected {
+  background: $color-secondary;
+  color: $white;
+}
+
+// hover selected day
+.CalendarDay__selected:hover {
+  background: lighten($color-secondary, 10%);
+  color: $white;
+}
+
+// second date not selected
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+  background: $color-secondary;
+}

@@ -6,23 +6,26 @@ import configureStore from './store/configureStore';
 import { auth } from './firebase/firebase';
 import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
+import LoadingPage from './components/LoadingPage';
 import 'normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import './styles/base/react-dates-overrides.scss';
 
 
 const store = configureStore();
 
+// Render variables
 const appJsx = (
   <Provider store={store}>
   <AppRouter />
   </Provider>
 );
-
 const appRoot = document.getElementById('app');
 
 // CHECK IF RENDERED / AVOID RE-RENDER IF ALREADY RENDERED
 let hasRendered = false;
+
 const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(appJsx, appRoot);
@@ -31,7 +34,7 @@ const renderApp = () => {
 }
 
 // LOADING
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 // LOGIN STATE CHANGE
 auth.onAuthStateChanged((user) => {

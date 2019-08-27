@@ -4,29 +4,27 @@ exports[`should render Header correctly 1`] = `
 <header
   className="header"
 >
-  <h1>
-    Expendify
-  </h1>
-  <nav
-    className="header__links"
+  <div
+    className="content-container"
   >
-    <NavLink
-      activeClassName="is-active"
-      to="/dashboard"
+    <nav
+      className="header__content"
     >
-      Dashboard
-    </NavLink>
-    <NavLink
-      activeClassName="is-active"
-      to="/create"
-    >
-      Create Expense
-    </NavLink>
-    <button
-      onClick={[Function]}
-    >
-      Logout
-    </button>
-  </nav>
+      <Link
+        className="header__title"
+        to="/dashboard"
+      >
+        <h1>
+          Expendify
+        </h1>
+      </Link>
+      <button
+        className="btn btn--primary btn--link"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </nav>
+  </div>
 </header>
 `;
