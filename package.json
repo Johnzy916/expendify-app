@@ -8,7 +8,7 @@
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
-    "dev-server-c9": "webpack-dev-server --host 0.0.0.0 --port 8080 --progress --hot",
+    "dev-server-c9": "webpack-dev-server --host 0.0.0.0 --port 8080",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build:prod"
