@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
-import ReactModal from './DeleteModal';
+import {  showModal } from '../actions/modal';
 
 export class EditExpensePage extends Component {
   constructor(props) {
@@ -17,26 +17,10 @@ export class EditExpensePage extends Component {
     this.props.history.push('/');
   }
   
-  hideModal = () => {
-    this.setState(() => ({
-      showModal: false
-    }));
-  }
-  
-  onRemove = () => {
-    this.setState(() => ({
-      showModal: true
-    }))
-  }
-  
   handleConfirmDelete = () => {
     this.hideModal();
     this.props.startRemoveExpense({ id: this.props.expense.id });
     this.props.history.push('/');
-  }
-  
-  handleCancelDelete = () => {
-    this.hideModal();
   }
 
   render() {
@@ -57,28 +41,24 @@ export class EditExpensePage extends Component {
           />
           <button
             className="btn btn--tertiary btn--shine"
-            onClick={this.onRemove}
+            onClick={this.props.showModal}
           >
             Remove
           </button>
         </div>
-        <ReactModal 
-          showModal={this.state.showModal}
-          handleConfirmDelete={this.handleConfirmDelete}
-          handleCancelDelete={this.handleCancelDelete}
-        />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, props) => ({
-  expense: state.expenses.find(expense => expense.id === props.match.params.id)
+  expense: state.expenses.find(expense => expense.id === props.match.params.id),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
+  showModal: () => dispatch(showModal('remove', {})),
   startEditExpense: (id, editedExpense) => dispatch(startEditExpense(id, editedExpense)),
-  startRemoveExpense: id => dispatch(startRemoveExpense(id))
+  startRemoveExpense: id => dispatch(startRemoveExpense(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);

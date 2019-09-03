@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
-
+import Modal from '../components/Modal';
 
 export const PrivateRoute = ({
         isAuthenticated,
@@ -14,7 +14,7 @@ export const PrivateRoute = ({
             <Fragment>
                 <Header />
                 <Component {...props} />
-                
+                <Modal />
             </Fragment>
         ) : (
             <Redirect to="/" />
@@ -23,7 +23,7 @@ export const PrivateRoute = ({
 );
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: !!state.auth.uid
+    isAuthenticated: !!state.auth.uid,
 });
 
 export default connect(mapStateToProps)(PrivateRoute);
