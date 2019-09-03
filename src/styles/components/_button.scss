@@ -25,11 +25,14 @@
         @include btn-colors($color-tertiary);
     }
     &--google {
-        @include btn-colors($color-primary)
-        
-        @include media(desktop) {
-          @include btn-colors(google); 
-        }
+        @include btn-colors($color-google);
+        color: #4285F4;
+    }
+    &--github {
+        @include btn-colors($color-github);
+    }
+    &--facebook {
+        @include btn-colors($color-facebook);
     }
 }
     
@@ -37,7 +40,7 @@
 .btn--link {
     background: none;
     position: relative;
-    z-index: 1;
+    z-index: 0;
     
     &::before {
         border: none;
@@ -73,11 +76,11 @@
     &::before,
     &::after {
         content: '';
-        width: calc(100% + 2rem);
+        width: calc(100% + 2.2rem);
         height: 100%;
         position: absolute;
         top: 0;
-        left: calc(-100% - 3rem);
+        left: calc(-100% - 3.5rem);
         transform: skew(-25deg);
         transition: all .3s;
     }

@@ -16,3 +16,10 @@
         font-weight: 700;
     }
 }
+
+.page-header__subtitle {
+    margin: 0;
+    font-weight: 300;
+    font-style: italic;
+    color: lighten($gray, 20%);
+}

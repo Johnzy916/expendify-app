@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { auth } from './firebase/firebase';
+import { firebase } from './firebase/firebase';
 import { startSetExpenses } from './actions/expenses';
-import { login, logout } from './actions/auth';
+import { login, setUserName, logout } from './actions/auth';
 import LoadingPage from './components/LoadingPage';
 import 'normalize.css';
 import './styles/styles.scss';
@@ -37,10 +37,11 @@ const renderApp = () => {
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 // LOGIN STATE CHANGE
-auth.onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     
     store.dispatch(login(user.uid));
+    store.dispatch(setUserName(user.displayName));
     store.dispatch(startSetExpenses())
       .then(() => {
         renderApp();

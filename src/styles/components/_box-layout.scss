@@ -1,21 +1,63 @@
 .box-layout {
     align-items: center;
-    background: center / cover url('/images/background.jpg');
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
+    position: relative;
+    
+    // so I can apply filters to the background image
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: center / cover url('/images/background.jpg');
+        filter: grayscale(50%);
+    }
 }
 
 .box-layout__box {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
     background: fade-out(white, .15);
     border-radius: .3rem;
     padding: $l-size $m-size;
     text-align: center;
-    width: 25rem;
+    width: 35rem;
+    position: relative;
 }
 
 .box-layout__title {
     margin: 0 0 $m-size 0;
     line-height: 1;
+}
+
+.box-layout__tagline {
+    margin: 0 0 $l-size 0;
+    padding: 0;
+    font-size: $font-size-lg;
+    font-weight: 300;
+    color: gray;
+    line-height: 1.4;
+}
+
+.box-layout__button {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-layout__button:not(:last-child) {
+    margin-bottom: $s-size;
+}
+
+.box-layout__button-logo {
+    margin: 0 1rem 0 0;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
 }

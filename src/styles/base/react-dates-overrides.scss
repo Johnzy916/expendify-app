@@ -16,13 +16,13 @@
 
 // selected day
 .CalendarDay__selected {
-  background: $color-secondary;
+  background: lighten($color-secondary, 10%);
   color: $white;
 }
 
 // hover selected day
 .CalendarDay__selected:hover {
-  background: lighten($color-secondary, 10%);
+  background: $color-secondary;
   color: $white;
 }
 
@@ -30,4 +30,18 @@
 .CalendarDay__hovered_span:hover,
 .CalendarDay__hovered_span {
   background: $color-secondary;
+}
+
+// keyboard shortcuts button
+.DayPickerKeyboardShortcuts_show__bottomRight {
+  outline: none;
+  
+  &::before {
+    border-right: 33px solid $color-primary;
+  }
+}
+
+// keyboard shorcuts button close
+.DayPickerKeyboardShortcuts_close {
+  outline: none;
 }

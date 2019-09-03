@@ -1,16 +1,42 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import ReactModal from './DeleteModal';
 
 export class EditExpensePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false
+    }
+  }
+  
   onSubmit = editedExpense => {
     this.props.startEditExpense(this.props.expense.id, editedExpense);
     this.props.history.push('/');
   }
+  
+  hideModal = () => {
+    this.setState(() => ({
+      showModal: false
+    }));
+  }
+  
   onRemove = () => {
+    this.setState(() => ({
+      showModal: true
+    }))
+  }
+  
+  handleConfirmDelete = () => {
+    this.hideModal();
     this.props.startRemoveExpense({ id: this.props.expense.id });
     this.props.history.push('/');
+  }
+  
+  handleCancelDelete = () => {
+    this.hideModal();
   }
 
   render() {
@@ -36,6 +62,11 @@ export class EditExpensePage extends Component {
             Remove
           </button>
         </div>
+        <ReactModal 
+          showModal={this.state.showModal}
+          handleConfirmDelete={this.handleConfirmDelete}
+          handleCancelDelete={this.handleCancelDelete}
+        />
       </div>
     );
   }

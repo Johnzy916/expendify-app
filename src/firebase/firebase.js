@@ -26,8 +26,15 @@ const database = firebase.database();
 // AUTHENTICATION
 ///////////////////
 
-const auth = firebase.auth();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const githubAuthProvider = new firebase.auth.GithubAuthProvider();
+const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 
 // EXPORTS
-export { auth, googleAuthProvider, database as default };
+export { 
+    firebase,
+    googleAuthProvider,
+    githubAuthProvider,
+    facebookAuthProvider,
+    database as default
+};

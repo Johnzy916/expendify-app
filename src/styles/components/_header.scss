@@ -17,3 +17,13 @@
         margin: 0;
     }
 }
+
+.header__username {
+    color: lighten($color-primary, 20%);
+    display: inline-block;
+    margin-right: 2rem;
+    
+    @include media(phone) {
+        display: none;
+    }
+}
