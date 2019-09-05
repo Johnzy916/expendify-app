@@ -1,30 +1,8 @@
 import React, { Component } from 'react';
-import ReactModal from './PasswordModal';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 
 export class LoginPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showModal: false
-        }
-    }
-    
-    hideModal = () => {
-        this.setState(() => ({
-          showModal: false
-        }));
-    }
-    
-    handleCancelPassword = () => {
-       this.hideModal(); 
-    }
-    
-    handleConfirmPassword = () => {
-        this.hideModal();
-        console.log('confirmed password');
-    }
     
     render() {
         return (
@@ -60,11 +38,6 @@ export class LoginPage extends Component {
                             Login with Facebook
                     </button>
                 </div>
-                <ReactModal 
-                  showModal={this.state.showModal}
-                  handleConfirmPassword={this.handleConfirmPassword}
-                  handleCancelPassword={this.handleCancelPassword}
-                />
             </div>
         );
     }

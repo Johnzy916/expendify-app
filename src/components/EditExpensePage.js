@@ -5,21 +5,9 @@ import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 import {  showModal } from '../actions/modal';
 
 export class EditExpensePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false
-    }
-  }
   
   onSubmit = editedExpense => {
     this.props.startEditExpense(this.props.expense.id, editedExpense);
-    this.props.history.push('/');
-  }
-  
-  handleConfirmDelete = () => {
-    this.hideModal();
-    this.props.startRemoveExpense({ id: this.props.expense.id });
     this.props.history.push('/');
   }
 
@@ -56,7 +44,14 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  showModal: () => dispatch(showModal('remove', {})),
+  showModal: () => dispatch(showModal({
+    contentLabel: 'Delete expense',
+    header: 'Are you sure you want to delete this expense?',
+    cancelText: 'Keep expense',
+    confirmText: 'Yes, delete',
+    confirmType: 'remove',
+    id: props.match.params.id
+  })),
   startEditExpense: (id, editedExpense) => dispatch(startEditExpense(id, editedExpense)),
   startRemoveExpense: id => dispatch(startRemoveExpense(id)),
 });

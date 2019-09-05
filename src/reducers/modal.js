@@ -1,6 +1,5 @@
 const initialState = {
     modalVisible: false,
-    modalType: null,
     modalProps: {}
 }
 
@@ -9,11 +8,13 @@ const modalReducer = (state = initialState, action) => {
     case 'SHOW_MODAL':
       return {
         modalVisible: true,
-        modalType: action.modalType,
         modalProps: action.modalProps
       }
     case 'HIDE_MODAL':
-      return initialState
+      return {
+        ...state,
+        modalVisible: false
+      }
     default:
       return state
   }

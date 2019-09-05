@@ -8,6 +8,7 @@ import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import Modal from '../components/Modal';
 
 // create history manually to access history outside of BrowserRouter / pass into Router
 export const history = createBrowserHistory();
@@ -23,6 +24,8 @@ const AppRouter = () => (
         <PrivateRoute path="/edit/:id" component={EditExpensePage} />
         <Route component={NotFoundPage} />
       </Switch>
+      
+      <Modal />
 
     </Fragment>
   </Router>

@@ -1,9 +1,11 @@
+import React, { Component } from 'react';
 import { firebase } from './firebase';
-
+import { connect } from 'react-redux';
+import { showModal } from '../actions/modal';
 
 const oauthLogin = async (provider) => {
     
-    function getProvider(providerId) {
+    const getProvider = (providerId) => {
       switch (providerId) {
         case firebase.auth.GoogleAuthProvider.PROVIDER_ID:
           return new firebase.auth.GoogleAuthProvider();
@@ -14,16 +16,19 @@ const oauthLogin = async (provider) => {
         default:
           throw new Error(`No provider implemented for ${providerId}`);
       }
-    }
+    };
     
     const supportedPopupSignInMethods = [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       firebase.auth.GithubAuthProvider.PROVIDER_ID,
     ];
-    
+
+ 
   try {
     await firebase.auth().signInWithPopup(provider);
+    return null;
+    
   } catch (err) {
     if (err.email && err.credential && err.code === 'auth/account-exists-with-different-credential') {
       const providers = await firebase.auth().fetchSignInMethodsForEmail(err.email)
@@ -35,10 +40,11 @@ const oauthLogin = async (provider) => {
       }
 
       const linkedProvider = getProvider(firstPopupProviderMethod);
-      linkedProvider.setCustomParameters({ login_hint: err.email });
-
-      const result = await firebase.auth().signInWithPopup(linkedProvider);
-      result.user.linkWithCredential(err.credential);
+      
+      return {
+        linkedProvider,
+        err
+      };
     }
 
     // Handle errors...
