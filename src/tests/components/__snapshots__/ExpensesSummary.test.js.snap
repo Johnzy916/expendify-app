@@ -21,6 +21,11 @@ exports[`should render correctly with 0 expenses 1`] = `
         $0.00
       </span>
     </h1>
+    <p
+      className="page-header__subtitle"
+    >
+      All expenses shown
+    </p>
     <div
       className="page-header__actions"
     >
@@ -56,6 +61,11 @@ exports[`should render correctly with multiple expenses 1`] = `
         $9.99
       </span>
     </h1>
+    <p
+      className="page-header__subtitle"
+    >
+      All expenses shown
+    </p>
     <div
       className="page-header__actions"
     >

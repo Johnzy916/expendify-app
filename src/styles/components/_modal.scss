@@ -18,7 +18,8 @@
 }
 
 .react-modal {
-    background: lighten($color-secondary, 40%);
+    background: $white;
+    box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .3);
     color: $dark-gray;
     max-width: 50rem;
     outline: none;

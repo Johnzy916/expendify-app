@@ -27,7 +27,6 @@ const oauthLogin = async (provider) => {
  
   try {
     await firebase.auth().signInWithPopup(provider);
-    return null;
     
   } catch (err) {
     if (err.email && err.credential && err.code === 'auth/account-exists-with-different-credential') {

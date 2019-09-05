@@ -12,13 +12,43 @@ exports[`should render LoginPage correctly 1`] = `
     >
       Expendify
     </h1>
-    <p>
+    <p
+      className="box-layout__tagline"
+    >
       Track, search, and expect what you're spending.
     </p>
     <button
-      className="btn btn--google btn--shine"
+      className="btn btn--google btn--shine box-layout__button"
+      onClick={[Function]}
     >
+      <img
+        alt="google logo"
+        className="box-layout__button-logo"
+        src="/images/brands/google-logo.png"
+      />
       Login with Google
+    </button>
+    <button
+      className="btn btn--github btn--shine box-layout__button"
+      onClick={[Function]}
+    >
+      <img
+        alt="google logo"
+        className="box-layout__button-logo"
+        src="/images/brands/github-logo.png"
+      />
+      Login with Github
+    </button>
+    <button
+      className="btn btn--facebook btn--shine box-layout__button"
+      onClick={[Function]}
+    >
+      <img
+        alt="google logo"
+        className="box-layout__button-logo"
+        src="/images/brands/facebook-logo.png"
+      />
+      Login with Facebook
     </button>
   </div>
 </div>

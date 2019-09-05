@@ -33,7 +33,7 @@ exports[`should render the EditExpensePage correctly 1`] = `
     />
     <button
       className="btn btn--tertiary btn--shine"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Remove
     </button>

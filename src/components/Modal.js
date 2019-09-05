@@ -3,9 +3,10 @@ import ReactModal from 'react-modal';
 import { connect } from 'react-redux';
 import {  hideModal, modalConfirm } from '../actions/modal';
 import { history } from '../routers/AppRouter';
-ReactModal.setAppElement('#app');
 
-const Modal = ({ modalVisible, modalProps, modalType, cancelModal, confirmModal }) => (
+if (process.env.NODE_ENV !== 'test') ReactModal.setAppElement('#app');
+
+export const Modal = ({ modalVisible, modalProps, modalType, cancelModal, confirmModal }) => (
     <ReactModal
         isOpen={modalVisible}
         contentLabel={modalProps.contentLabel}
