@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
 import { firebase } from './firebase';
-import { connect } from 'react-redux';
-import { showModal } from '../actions/modal';
 
 const oauthLogin = async (provider) => {
     
@@ -33,7 +30,6 @@ const oauthLogin = async (provider) => {
       const providers = await firebase.auth().fetchSignInMethodsForEmail(err.email)
       const firstPopupProviderMethod = providers.find(p => supportedPopupSignInMethods.includes(p));
 
-      // Test: Could this happen with email link then trying social provider?
       if (!firstPopupProviderMethod) {
         throw new Error(`Your account is linked to a provider that isn't supported.`);
       }
