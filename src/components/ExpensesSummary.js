@@ -8,6 +8,7 @@ import selectExpensesTotal from '../selectors/selectExpensesTotal';
 export const ExpensesSummary = ({ totalExpensesCount, expenseCount, expensesTotal }) => {
   const expenseWord = expenseCount === 1 ? " expense " : " expenses ";
   const hiddenExpenses = totalExpensesCount - expenseCount;
+  const hiddenExpenseWord = hiddenExpenses === 1 ? 'expense' : 'expenses';
   const total = numeral(expensesTotal / 100).format('$0,0.00');
   return (
     <div className="page-header">
@@ -17,7 +18,12 @@ export const ExpensesSummary = ({ totalExpensesCount, expenseCount, expensesTota
         </h1>
         <p className="page-header__subtitle">
         {
-          hiddenExpenses > 0 ? `Not showing ${hiddenExpenses} expenses, due to filters`
+        
+        
+          hiddenExpenses > 0 ? 
+          <span>Not showing&nbsp;
+          <span className="page-header__subtitle-number">{hiddenExpenses}</span>&nbsp;
+          {hiddenExpenseWord}, due to filters</span>
           : `All expenses shown`
         }
         </p>

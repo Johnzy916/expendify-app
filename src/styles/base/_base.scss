@@ -9,8 +9,8 @@ html {
 }
 
 ::selection {
-  background-color: rgba(lighten($color-secondary, 10%), .5);
-  color: rgba(darken($color-secondary, 10%), .8);
+  background-color: rgba(lighten($color-primary, 10%), .5);
+  color: rgba(darken($color-primary, 10%), .8);
 }
 
 body {
