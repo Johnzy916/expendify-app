@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactModal from 'react-modal';
 import { connect } from 'react-redux';
 import {  hideModal, modalConfirm } from '../actions/modal';

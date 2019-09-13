@@ -1,12 +1,12 @@
 // colors for buttons and shine
 @mixin btn-colors($color) {
-        background: $color;
-        &::before {
-            background: lighten($color, 10%);
-        }
-        &::after {
-            background: rgba($white, .5);;
-        }
+    background: $color;
+    &::before {
+        background: lighten($color, 10%);
+    }
+    &::after {
+        background: rgba($white, .5);;
+    }
 }
 
 // media queries
